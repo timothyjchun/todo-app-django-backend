@@ -17,6 +17,7 @@ class GetTaskView(APIView):
 
     def get(self,request,format = None):
         tasks = Task.objects.all()
+        return JsonResponse(tasks)
 
 
 class AddTaskView(APIView):
