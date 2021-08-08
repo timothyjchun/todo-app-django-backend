@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'ToDoApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd40plguv5kg7dq',
+        'HOST': 'ec2-3-227-44-84.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER':'smnxitxkmvjauo',
+        'PASSWORD':'66f48ba84e10298bbd0803460d72c15bc15487cb3e000eaa1b203631b17fe26a'
     }
 }
 
