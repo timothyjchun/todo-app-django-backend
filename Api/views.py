@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from rest_framework import generics, serializers
-from rest_framework.views import APIView
 # Create your views here.
+from django.shortcuts import render
+from rest_framework import generics, serializers, status
+from rest_framework.views import APIView
+from django.http import JsonResponse
 from .models import Task
 from .serializers import TaskSerializer
 
@@ -11,25 +12,25 @@ class TaskView(generics.ListAPIView):
     serializer_class = TaskSerializer
 
 
-class GetTask(APIView):
-    serializers = TaskSerializer
+class GetTaskView(APIView):
+    serializer_class = TaskSerializer
 
-    def get(self,request):
-        pass
-
-
-class AddTask(APIView):
-    serializers = TaskSerializer
-
-    def post(self,request):
-        pass
+    def get(self,request,format = None):
+        tasks = Task.objects.all()
 
 
-class DeleteTask(APIView):
-    serializers = TaskSerializer
+class AddTaskView(APIView):
+    serializer_class = TaskSerializer
+
+    def post(self,request,format = None):
+        serializer = self.serializer_class(request.data)
+
+
+class DeleteTaskView(APIView):
+    serializer_class = TaskSerializer
     
-    def post(self,request):
+    def post(self,request,format = None):
         pass
 
-class EditTask(APIView):
+class EditTaskView(APIView):
     pass
